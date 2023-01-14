@@ -58,7 +58,7 @@ while flag_1 ~= VArraysum
         enter_time = Alltime;
         
         if print_time
-        fprintf('time=%d, %d enter\n',enter_time,p);
+        fprintf('time=%d, task %d enter\n',enter_time,p);
         end
         
         gante_tu(p,3) = enter_time;
@@ -67,7 +67,7 @@ while flag_1 ~= VArraysum
         quit_time = Alltime;
         
         if print_time
-        fprintf('time=%d, %d exit\n',quit_time,p);
+        fprintf('time=%d, task %d exit\n',quit_time,p);
         end
         
         gante_tu(p,4) = quit_time;
@@ -92,7 +92,7 @@ while flag_1 ~= VArraysum
                     used(p) = 1;
                     enter_time = Alltime;
                     if print_time 
-                    fprintf('time=%d, %d enter\n',enter_time,p);
+                    fprintf('time=%d, task %d enter\n',enter_time,p);
                     end
                     gante_tu(p,3) = enter_time;
                 else
@@ -131,7 +131,7 @@ while flag_1 ~= VArraysum
         for i = 1:size(c,2)
             quit_time = Alltime;
             if print_time
-            fprintf('time=%d, %d exit\n',quit_time,exe(c(i)));
+            fprintf('time=%d, task %d exit\n',quit_time,exe(c(i)));
             end
             gante_tu(exe(c(i)),4) = quit_time;
         end

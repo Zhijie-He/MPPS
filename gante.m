@@ -69,3 +69,6 @@ axis([0 ymax+10 0 xmax+1]);
 set(gca,'Box','on');
 set(gca,'YTick',0:Vsum);
 set(gca,'YTickLabel',[{''};num2str((1:Vsum)','A%d');{''}]);
+x_width=30 ;y_width=25;
+set(gcf, 'PaperPosition', [0 0 x_width y_width]); %
+saveas(gcf,'images/project_gante.png')
