@@ -40,6 +40,10 @@ In the Const.m file, we preset the project information, here we use two project 
 <img src="https://github.com/Zhijie-He/MPPS/blob/main/images/MPPS_generation_3d.gif" width="80%" height="80%"/>
 </p>
 
+<p align="center">
+<img src="https://github.com/Zhijie-He/MPPS/blob/main/images/MPPS_generation_3d_rotation.gif" width="80%" height="80%"/>
+</p>
+
 ### Gante Chart
 <p align="center">
 <img src="https://github.com/Zhijie-He/MPPS/blob/main/images/project_gante.png"/>
