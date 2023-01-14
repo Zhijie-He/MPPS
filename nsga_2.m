@@ -63,7 +63,6 @@ for i = 1 : gen
         xlim([30 100]);
         ylim([7000 20000]);
         title('Multi-objective pareto diagram based on key resources');
-        pause(0.01);
         
     elseif M ==3
         %plot3(chromosome(:,V + 1),chromosome(:,V + 2),chromosome(:,V + 3),'*');
@@ -73,7 +72,7 @@ for i = 1 : gen
         A = [chromosome(:,V + 1) chromosome(:,V + 2) chromosome(:,V + 3)];
         A = unique(A,'rows');
         x = A(:,1);y = A(:,2);z = A(:,3);
-        [X,Y,Z] = griddata(x,y,z,linspace(min(x),max(x))',linspace(min(y),max(y)),'v4');%²åÖµ
+        [X,Y,Z] = griddata(x,y,z,linspace(min(x),max(x))',linspace(min(y),max(y)),'v4');
         mesh(X,Y,Z),hold on,scatter3(x,y,z,'filled');
         xlabel('Project A time');
         ylabel('Project B time');
@@ -81,7 +80,7 @@ for i = 1 : gen
         xlim([30 120]);
         ylim([50 120]);
         zlim([10000 18000]);
-        pause(0.03);
+
     end
     % record as gif
     set(gcf,'color','w'); % set figure background to white
@@ -105,7 +104,7 @@ for i = 1 : gen
 end
 %% Result
 save solution.txt chromosome -ASCII
-
+clf % clear figure
 %% Visualize
 if M == 2
     figure
@@ -134,27 +133,38 @@ if M == 2
     
 elseif M ==3
     clf
-    plot3(chromosome(:,V + 1),chromosome(:,V + 2),chromosome(:,V + 3),'*');
-    figure
+    % plot3(chromosome(:,V + 1),chromosome(:,V + 2),chromosome(:,V + 3),'*');
     A = [chromosome(:,V + 1) chromosome(:,V + 2) chromosome(:,V + 3)];
     A = unique(A,'rows'); % delete duplicate rows
     x = A(:,1);y = A(:,2);z = A(:,3);
     [X,Y,Z] = griddata(x,y,z,linspace(min(x),max(x))',linspace(min(y),max(y)),'v4');%²åÖµ
-
     mesh(X,Y,Z), hold on, scatter3(x,y,z,'filled');% draw mesh graph and scatter points
     xlabel('Project A time');
     ylabel('Project B time');
     zlabel('Project cost');
     % 3D rotation
     axis vis3d
-    for i=1:20
+    for i=1:30
         pause(0.2);
         camorbit(10,0)
         drawnow;
+        set(gcf,'color','w'); % set figure background to white
+        frame = getframe(1);
+        im = frame2im(frame);
+        [imind,cm] = rgb2ind(im,256);
+
+        outfile = 'images/MPPS_generation_3d_rotation.gif';
+
+        % On the first loop, create the file. In subsequent loops, append.
+        if i==1
+            imwrite(imind, cm, outfile,'gif','DelayTime',0,'loopcount',inf);
+        else
+            imwrite(imind, cm, outfile,'gif','DelayTime',0,'writemode','append');
+        end
     end
 end
-
-figure(2)
+clf
+figure
 test_x = chromosome(1, 1:VArraysum);
 test_index = chromosome(1, VArraysum+1:VArraysum*2);
 test_part = chromosome(1, VArraysum*2+1:VArraysum*3);

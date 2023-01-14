@@ -1,7 +1,7 @@
 # MPPS : Research on a Model of Multi-Project Parallel Scheduling with Flexible Competitive Collaboration Planning
 
 Codebase for [MPPS: Research on a Model of Multi-Project Parallel Scheduling with Flexible Competitive Collaboration Planning
-](https://www.hanspub.org/journal/PaperInformation.aspx?paperID=27483)
+](https://www.hanspub.org/journal/PaperInformation.aspx?paperID=27483) [??????????????????????]
 
 <p align="center">
 <img src="https://github.com/Zhijie-He/MPPS/blob/main/images/MPPS_generation_3d.gif" width="80%" height="80%"/>
